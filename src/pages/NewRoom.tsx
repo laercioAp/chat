@@ -16,7 +16,7 @@ export function NewRoom() {
     async function handleCreateRoom(event: FormEvent) {
         event.preventDefault();
         
-        if(newRoom.trim() == '') {
+        if(newRoom.trim() === '') {
             return;
         }
 
@@ -34,7 +34,7 @@ export function NewRoom() {
         <div id="page-auth">
             <aside>
                 <img src={ilustrationImg} alt="Ilustração simbolizando perguntas e respostas" />
-                <strong>Crie salas de Q&amp;A ao-vivo</strong>
+                <strong>Chat de bate papo</strong>
                 <p>Tire as dúvidas da sua audiência em tempo-real</p>
             </aside>
             <main>

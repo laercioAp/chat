@@ -15,7 +15,7 @@ export function Home() {
     const [roomCode, setRoomCode] = useState('');
 
     async function handleCreateRoom() {
-        if(!user) {
+        if (!user) {
             await signInWithGoogle()
         }
 
@@ -25,13 +25,18 @@ export function Home() {
     async function handleJoinRoom(event: FormEvent) {
         event.preventDefault();
 
-        if(roomCode.trim() == '') {
+        if (roomCode.trim() === '') {
             return;
         }
         const roomRef = await database.ref(`rooms/${roomCode}`).get();
 
-        if(!roomRef.exists()) {
+        if (!roomRef.exists()) {
             alert('Room does not exixts');
+            return;
+        }
+
+        if (roomRef.val().endedAt) {
+            alert('Room already closed.');
             return;
         }
 
@@ -43,7 +48,7 @@ export function Home() {
         <div id="page-auth">
             <aside>
                 <img src={ilustrationImg} alt="Ilustração simbolizando perguntas e respostas" />
-                <strong>Crie salas de Q&amp;A ao-vivo</strong>
+                <strong>Chat de bate papo</strong>
                 <p>Tire as dúvidas da sua audiência em tempo-real</p>
             </aside>
             <main>
